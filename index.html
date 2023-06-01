@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Curiosidades Musicais</title>
+    <style>
+      @font-face {
+        font-family: 'Lobster';
+        src: url('fonts/Lobster-Regular.ttf') format('truetype');
+      }
+
+      @font-face {
+        font-family: 'Gilroy';
+        src: url('fonts/Gilroy-Regular.ttf') format('truetype');
+      }
+
+      body {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Lobster', cursive;
+      }
+
+      body img {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+      }
+
+      h1 {
+        position: absolute;
+        font-size: 92px;
+        top: 100px;
+      }
+
+      p {
+        position: absolute;
+        font-family: 'Gilroy', sans-serif;
+      }
+
+      .container-curiosity {
+        width: 350px;
+        height: 350px;
+        background-color: black;
+        position: absolute;
+        border-radius: 50%;
+        bottom: 150px;
+        display: flex;
+        z-index: 999;
+      }
+
+      .button-curiosity {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        position: relative;
+        border-radius: 50%;
+        color: white;
+        font-size: 32px;
+      }
+
+      .button-curiosity:hover {
+        cursor: pointer;
+      }
+
+      #curiosity {
+        position: absolute;
+        top: 500px;
+        font-size: 32px;
+        font-family: 'Gilroy', sans-serif;
+        background-color: black;
+        color: white;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 50px;
+        border-radius: 12px;
+      }
+
+      .button-back {
+        position: absolute;
+        width: 100px;
+        height: 60px;
+        right: 140px;
+        bottom: 100px;
+        background-color: white;
+        border: 2px solid black;
+        color: black;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      .button-back:hover {
+        cursor: pointer;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="./carta-curiosidade.png" alt="carta de curiosidade" />
+    <h1>CARTA DA CURIOSIDADE</h1>
+
+    <p id="curiosity" style="display: none"></p>
+
+    <div class="container-curiosity">
+      <button class="button-curiosity" onclick="showCuriosity()">
+        GERE UMA NOVA CURIOSIDADE
+      </button>
+    </div>
+
+    <button class="button-back" onclick="comeback()">VOLTAR</button>
+    <script>
+      // Array de curiosidades musicais
+      var curiosities = [
+        'O samba é um dos gêneros musicais mais tradicionais do Brasil, originário dos antigos batuques trazidos pelos escravos africanos.',
+        'A Bossa Nova é um estilo musical brasileiro que surgiu na década de 1950 e ganhou destaque internacionalmente com artistas como João Gilberto e Tom Jobim.',
+        'O forró é um gênero musical nordestino que possui variações como o xote, o baião e o arrasta-pé, e é conhecido por suas festas animadas e dançantes.',
+        'O frevo é um ritmo característico do carnaval de Pernambuco, com suas batidas aceleradas e passos de dança marcantes.',
+        'O funk carioca é um estilo musical originário das favelas do Rio de Janeiro, com batidas envolventes e letras que abordam o cotidiano e a realidade das comunidades.',
+        'A música brega, também conhecida como música romântica popular, é um gênero que faz sucesso principalmente no Norte e Nordeste do Brasil.',
+        'O maracatu é um ritmo de origem afro-brasileira, típico de Pernambuco, que envolve percussão e dança.',
+        'O axé music é um estilo musical originário da Bahia, conhecido por suas batidas animadas e dançantes.',
+        'O chorinho, também chamado de choro, é um gênero instrumental brasileiro que surgiu no século XIX.',
+        'O baião é um ritmo nordestino que mistura influências indígenas, africanas e europeias.',
+        'O pagode é um estilo musical brasileiro que teve origem no samba e ganhou popularidade nas décadas de 1980 e 1990.',
+        'A música caipira, também conhecida como música sertaneja raiz, é um gênero que retrata a vida no campo e as tradições do interior do Brasil.',
+        'O lambada é um estilo musical e dança originários da região norte do Brasil, com influências caribenhas.',
+        'O rap é um gênero musical que ganhou destaque no Brasil na década de 1990, com letras que abordam questões sociais e políticas.',
+        'A música gospel é um gênero religioso que tem ganhado cada vez mais espaço no cenário musical brasileiro.',
+        'O sertanejo universitário é um subgênero do sertanejo que surgiu nos anos 2000, com influências do pop e do rock.',
+        'O rock nacional brasileiro teve seu auge nas décadas de 1980 e 1990, com bandas como Legião Urbana, Titãs e Paralamas do Sucesso.',
+        'A música eletrônica ganhou popularidade no Brasil a partir da década de 1990, com festas e festivais de música eletrônica acontecendo por todo o país.',
+        'O carimbó é um ritmo típico do estado do Pará, com influências indígenas e africanas.',
+        'O rap brasileiro possui uma grande diversidade de estilos e subgêneros, com artistas de diferentes regiões do país deixando sua marca no cenário.',
+        'A música instrumental brasileira tem grandes representantes, como Tom Jobim, Hermeto Pascoal e Egberto Gismonti.',
+      ];
+
+      // Função para gerar uma curiosidade aleatória
+      function generateCuriosity() {
+        var index = Math.floor(Math.random() * curiosities.length);
+        return curiosities[index];
+      }
+
+      // Função para exibir a curiosidade
+      function showCuriosity() {
+        var curiosityElement = document.getElementById('curiosity');
+        var curiosityContainer = document.querySelector('.container-curiosity');
+
+        if (curiosityElement.style.display === 'none') {
+          curiosityElement.textContent = generateCuriosity();
+          curiosityElement.style.display = 'block';
+          curiosityContainer.style.display = 'none';
+        } else {
+          curiosityElement.style.display = 'none';
+          curiosityContainer.style.display = 'flex';
+        }
+      }
+
+      function comeback() {
+        window.location.href =
+          'https://xd.adobe.com/view/6fab3151-c35b-422e-8304-88d4b55b4adf-3af8/?fullscreen';
+      }
+    </script>
+  </body>
+</html>
