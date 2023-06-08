@@ -10,7 +10,7 @@
 
       @font-face {
         font-family: 'Gilroy';
-        src: url('fonts/Gilroy-Regular.ttf') format('truetype');
+        src: url('fonts/gilroy-light.otf') format('truetype');
       }
 
       body {
@@ -44,7 +44,6 @@
       .container-curiosity {
         width: 250px;
         height: 250px;
-        background-color: black;
         border-radius: 50%;
         bottom: 150px;
         display: flex;
@@ -112,7 +111,7 @@
       </button>
     </div>
 
-    <!-- <button class="button-back" onclick="comeback()">VOLTAR</button> -->
+    <button class="button-back" onclick="comeback()">VOLTAR</button>
     <script>
       // Array de curiosidades musicais
       var curiosities = [
@@ -145,11 +144,12 @@
         return curiosities[index];
       }
 
-      // Função para exibir a curiosidade
-      function showCuriosity() {
-        var curiosityElement = document.getElementById('curiosity');
-        var curiosityContainer = document.querySelector('.container-curiosity');
+      var curiosityElement = document.getElementById('curiosity');
+      var curiosityContainer = document.querySelector('.container-curiosity');
 
+      // Função para exibir a curiosidade
+
+      function showCuriosity() {
         if (curiosityElement.style.display === 'none') {
           curiosityElement.textContent = generateCuriosity();
           curiosityElement.style.display = 'block';
@@ -160,10 +160,14 @@
         }
       }
 
-      // function comeback() {
-      //   window.location.href =
-      //     'https://xd.adobe.com/view/6fab3151-c35b-422e-8304-88d4b55b4adf-3af8/screen/68dbfde0-e9a6-4327-901c-e74c6294087d?fullscreen';
-      // }
+      function comeback() {
+        if (curiosityElement.style.display === 'block') {
+          curiosityElement.style.display = 'none';
+          curiosityContainer.style.display = 'block';
+        }
+
+        // console.log(curiosityContainer);
+      }
     </script>
   </body>
 </html>
